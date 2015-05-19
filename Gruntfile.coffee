@@ -1,5 +1,8 @@
 module.exports = (grunt) ->
-	jsLib = []
+	jsLib = [
+		'bower_components/angular/angular.js',
+		'bower_components/angular-ui-router/release/angular-ui-router.js'
+	]
 	cssLib = []
 
 	grunt.initConfig

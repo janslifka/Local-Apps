@@ -5,6 +5,6 @@ html
 		link(rel="stylesheet", type="text/css", href="local-apps.css")
 		title Local Apps
 
-	body
-		h1 Local Apps
-		script(type="text/javascript", href="local-apps.js")
+	body(ng-app="local-apps")
+		div(ui-view)
+		script(type="text/javascript", src="local-apps.js")
