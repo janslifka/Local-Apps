@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+
+    "name": "Local Apps",
+    "description": "Chrome extension for local development storing information about local applications",
+    "version": "0.0",
+
+    "app": {
+        "launch": {
+            "local_path": "index.html"
+        }
+    },
+
+    "icons": {
+        "16": "images/icons/icon-16.png",
+        "128": "images/icons/icon-128.png",
+        "512": "images/icons/icon-512.png"
+    }
+}
