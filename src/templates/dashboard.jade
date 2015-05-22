@@ -1,1 +1,28 @@
-h1 Dashboard
+div.dashboard-menu
+	div.btn-group
+		a.btn.btn-default.dropdown-toggle(href='#', data-toggle='dropdown')
+			i.fa.fa-bars
+		ul.dropdown-menu.dropdown-menu-right
+			li
+				a(ng-click="addApp()") #[i.fa.fa-plus] Add app
+			li
+				a(ng-click="editApps()") #[i.fa.fa-th] Manage apps
+			li
+				a(ng-click="openSettings()") #[i.fa.fa-gears] Settings
+
+div.edit-lock(ng-show='editing')
+	div.well You are now editing your applications
+		button.btn.btn-primary(ng-click='finishEditing()') Done
+
+div.dashboard
+	div.apps(ng-class="{editing: editing}")
+		hr(ng-show="$index > 0 && $index % 4 == 0", ng-repeat-start='app in apps')
+		div.app(ng-repeat-end, ng-class='{offline: !app.online}', ng-click='openApp(app.url)')
+			div.app-toolbar
+				span.badge(ng-click='editApp(app)')
+					i.fa.fa-pencil
+				span.badge(ng-click='removeApp()')
+					i.fa.fa-times
+			div.app-icon
+				img
+			div.app-name {{ app.name }}

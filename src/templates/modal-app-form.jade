@@ -1,0 +1,19 @@
+form.form-horizontal(name='formAddApp', ng-submit='formAddApp.$valid && saveApp()', method='post', novalidate)
+	div.modal-header
+		button.close(type='button', data-dismiss='modal')
+			span &times;
+		h4.modal-title {{ formTitle }}
+	div.modal-body
+		div.form-group(ng-class='{"has-error": formAddApp.name.$invalid && formAddApp.name.$dirty || formAddApp.name.$invalid && formAddApp.$submitted}')
+			label.control-label.col-sm-3(for='form-name') Name
+			div.col-sm-9
+				input.form-control(ng-model='app.name', required, type='text', name='name', id='form-name', placeholder='Name')
+
+		div.form-group(ng-class='{"has-error": formAddApp.url.$invalid && formAddApp.url.$dirty || formAddApp.url.$invalid && formAddApp.$submitted}')
+			label.control-label.col-sm-3(for='form-url') Url
+			div.col-sm-9
+				input.form-control(ng-model='app.url', required, type='text', name='url', id='form-url', placeholder='Url')
+
+	div.modal-footer
+		button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+		input.btn.btn-primary(type='submit', value='Save')

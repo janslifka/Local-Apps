@@ -1,0 +1,118 @@
+.dashboard
+  display: table
+  width: 100%
+  height: 100vh
+
+.apps
+  text-align: center
+  display: table-cell
+  vertical-align: middle
+
+  hr
+    visibility: hidden
+
+  &.editing
+    .app
+      cursor: default
+
+      .app-toolbar
+        display: block
+        z-index: 10
+        width: 100%
+        height: 100%
+
+        .badge
+          cursor: pointer
+
+      .app-icon
+        img
+          -webkit-animation-name: shake
+          -webkit-animation-duration: 0.2s
+          -webkit-animation-iteration-count: infinite
+          -webkit-animation-timing-function: linear
+
+      &:nth-of-type(even)
+        .app-icon
+          img
+            -webkit-animation-delay: 0.1s
+
+      &:hover
+        .app-icon
+          img
+            margin: 10px
+            width: 100px
+            height: 100px
+
+.app
+  width: 120px
+  height: 140px
+  cursor: pointer
+  display: inline-block
+  position: relative
+
+  .app-toolbar
+    position: absolute
+    top: 0
+    right: 0
+    text-align: right
+    display: none
+
+    .badge
+      padding-left: 3px
+      padding-right: 3px
+      width: 19px
+      margin-left: 2px
+
+  .app-icon
+    width: 120px
+    height: 120px
+
+    img
+      margin: 10px
+      width: 100px
+      height: 100px
+      background: deeppink
+      -webkit-transition: all .15s ease-in-out
+      -webkit-border-radius: 10px
+      border: 0
+
+  .app-name
+    height: 20px
+    text-align: center
+
+  &:hover
+    .app-icon
+      img
+        width: 110px
+        height: 110px
+        margin: 5px
+
+  &.offline
+    .app-icon
+      opacity: 0.5
+
+.dashboard-menu
+  position: absolute
+  right: 0
+  top: 0
+  padding: 10px
+  text-align: right
+
+  a
+    cursor: pointer
+
+.dropdown-menu
+  .fa
+    margin-left: -10px
+    margin-right: 5px
+
+.edit-lock
+  position: absolute
+  top: 0
+  text-align: center
+  width: 100%
+
+  button
+    position: absolute
+    right: 10px
+    top: 9px

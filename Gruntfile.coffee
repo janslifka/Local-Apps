@@ -1,9 +1,19 @@
 module.exports = (grunt) ->
 	jsLib = [
+		'bower_components/jquery/dist/jquery.js',
+		'bower_components/bootswatch-dist/js/bootstrap.js',
 		'bower_components/angular/angular.js',
-		'bower_components/angular-ui-router/release/angular-ui-router.js'
+		'bower_components/angular-ui-router/release/angular-ui-router.js',
 	]
-	cssLib = []
+
+	jsLibAnnotate = [
+		'bower_components/angular-bs-modal/dist/js/angular-bs-modal.js'
+	]
+
+	cssLib = [
+		'bower_components/bootswatch-dist/css/bootstrap.css',
+		'bower_components/font-awesome/css/font-awesome.css'
+	]
 
 	grunt.initConfig
 		pkg: grunt.file.readJSON('package.json')
@@ -14,28 +24,33 @@ module.exports = (grunt) ->
 			after: [
 				'dist/coffee',
 				'dist/style',
-				'dist/main.js'
+				'dist/temp-js'
 			]
 
 		coffee:
 			compile:
 				files:
-					'dist/main.js': ['dist/coffee/**/*.coffee']
+					'dist/temp-js/main.js': ['dist/coffee/**/*.coffee']
 
 		copy:
 			main:
 				files: [
 					expand: true
 					flatten: false
-					cwd: 'src',
-					src: ['manifest.json', 'background.js', 'images/**/*.*']
+					cwd: 'src'
+					src: ['manifest.json', 'background.js', 'images/**/*']
 					dest: 'dist/'
+				,
+					expand: true
+					flatten: true
+					src: ['bower_components/font-awesome/fonts/*']
+					dest: 'dist/fonts'
 				]
 
 		cssmin:
 			dist:
 				files:
-					'dist/<%= pkg.name %>.css': cssLib.concat(['dist/style/*.css'])
+					'dist/css/<%= pkg.name %>.css': cssLib.concat(['dist/style/*.css'])
 
 		jade:
 			compile:
@@ -49,6 +64,11 @@ module.exports = (grunt) ->
 					expand: true
 					ext: '.html'
 				]
+
+		ngAnnotate:
+			app:
+				files:
+					'dist/temp-js/lib.js': jsLibAnnotate
 
 		ngClassify:
 			app:
@@ -78,7 +98,11 @@ module.exports = (grunt) ->
 		uglify:
 			dist:
 				files:
-					'dist/<%= pkg.name %>.js': jsLib.concat(['dist/main.js'])
+					'dist/js/<%= pkg.name %>.js': jsLib.concat(['dist/temp-js/lib.js', 'dist/temp-js/main.js'])
+
+		watch:
+			files: ['src/**/*']
+			tasks: ['build']
 
 	grunt.loadNpmTasks 'grunt-contrib-clean'
 	grunt.loadNpmTasks 'grunt-contrib-coffee'
@@ -87,7 +111,8 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-jade'
 	grunt.loadNpmTasks 'grunt-contrib-sass'
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
+	grunt.loadNpmTasks 'grunt-contrib-watch'
 	grunt.loadNpmTasks 'grunt-ng-annotate'
 	grunt.loadNpmTasks 'grunt-ng-classify'
 
-	grunt.registerTask 'build', ['clean:before', 'jade', 'copy', 'ngClassify', 'coffee', 'uglify', 'sass', 'cssmin', 'clean:after']
+	grunt.registerTask 'build', ['clean:before', 'jade', 'copy', 'ngClassify', 'coffee', 'ngAnnotate', 'uglify', 'sass', 'cssmin', 'clean:after']

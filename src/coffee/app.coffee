@@ -1,5 +1,6 @@
 class App extends App
 	constructor: ->
 		return [
-			'ui.router'
+			'ui.router',
+			'angular.bs.modal'
 		]
