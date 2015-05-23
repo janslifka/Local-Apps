@@ -4,6 +4,7 @@ module.exports = (grunt) ->
 		'bower_components/bootswatch-dist/js/bootstrap.js',
 		'bower_components/angular/angular.js',
 		'bower_components/angular-ui-router/release/angular-ui-router.js',
+		'bower_components/ngImgCrop/compile/unminified/ng-img-crop.js'
 	]
 
 	jsLibAnnotate = [
@@ -12,7 +13,8 @@ module.exports = (grunt) ->
 
 	cssLib = [
 		'bower_components/bootswatch-dist/css/bootstrap.css',
-		'bower_components/font-awesome/css/font-awesome.css'
+		'bower_components/font-awesome/css/font-awesome.css',
+		'bower_components/ngImgCrop/compile/unminified/ng-img-crop.css'
 	]
 
 	grunt.initConfig
@@ -24,7 +26,7 @@ module.exports = (grunt) ->
 			after: [
 				'dist/coffee',
 				'dist/style',
-				'dist/temp-js'
+#				'dist/temp-js'
 			]
 
 		coffee:

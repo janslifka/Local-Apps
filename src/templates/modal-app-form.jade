@@ -14,6 +14,20 @@ form.form-horizontal(name='formAddApp', ng-submit='formAddApp.$valid && saveApp(
 			div.col-sm-9
 				input.form-control(ng-model='app.url', required, type='text', name='url', id='form-url', placeholder='Url')
 
+		div.form-group
+			label.control-label.col-sm-3(form='file-input') Icon
+			div.col-sm-9
+				div.input-group
+					span.input-group-btn
+						span.btn.btn-default.btn-file Browse
+							input.form-control(type='file', id='file-input')
+					input.form-control(type='text', ng-model='appFileName', readonly)
+
+		div.form-group
+			div.col-sm-9.col-sm-offset-3
+				div.crop-area
+					img-crop(image='appImage', result-image='appCroppedImage', area-type='square', result-image-size='120')
+
 	div.modal-footer
 		button.btn.btn-default(type='button', data-dismiss='modal') Cancel
 		input.btn.btn-primary(type='submit', value='Save')
