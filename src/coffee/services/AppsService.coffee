@@ -15,6 +15,13 @@ class Apps extends Factory
 					)
 				)
 
+			remove: (id, callback) ->
+				$indexedDB.openStore('apps', (store) ->
+					store.delete(id).then(->
+						callback?()
+					)
+				)
+
 			getAll: (callback) ->
 				$indexedDB.openStore('apps', (store) ->
 					store.getAll().then((apps) ->

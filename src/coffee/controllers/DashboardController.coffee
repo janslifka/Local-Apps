@@ -26,12 +26,7 @@ class Dashboard extends Controller
 			)
 
 		$scope.editApp = (app) ->
-			console.log(app)
-			$scope.app =
-				id: app.id
-				name: app.name
-				url: app.url
-				icon: app.icon
+			$scope.app = copyAppData(app)
 
 			modal.open(
 				scope: $scope
@@ -39,10 +34,13 @@ class Dashboard extends Controller
 				controller: 'editAppController'
 			)
 
-		$scope.removeApp = ->
+		$scope.removeApp = (app) ->
+			$scope.app = copyAppData(app)
+
 			modal.open(
 				scope: $scope
 				templateUrl: 'templates/modal-app-remove.html'
+				controller: 'removeAppController'
 			)
 
 		$scope.openSettings = ->
@@ -50,6 +48,14 @@ class Dashboard extends Controller
 				scope: $scope
 				templateUrl: 'templates/modal-settings.html'
 			)
+
+		copyAppData = (source) ->
+			app =
+				id: source.id
+				name: source.name
+				url: source.url
+				icon: source.icon
+			return app
 
 		checkStatus = ->
 			angular.forEach($scope.apps, (app) ->

@@ -21,7 +21,7 @@ div.dashboard
 			div.app-toolbar
 				span.badge(ng-click='editApp(app)')
 					i.fa.fa-pencil
-				span.badge(ng-click='removeApp()')
+				span.badge(ng-click='removeApp(app)')
 					i.fa.fa-times
 			div.app-icon
 				img(ng-src='{{ app.icon }}')
