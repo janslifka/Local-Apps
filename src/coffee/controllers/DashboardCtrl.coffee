@@ -1,7 +1,5 @@
 class Dashboard extends Controller
 	constructor: ($scope, $window, modal, Apps, $interval, ServerStatus) ->
-		console.error = ->
-
 		$scope.editing = false
 		$scope.apps = []
 
@@ -27,7 +25,14 @@ class Dashboard extends Controller
 				controller: 'addAppController'
 			)
 
-		$scope.editApp = ->
+		$scope.editApp = (app) ->
+			console.log(app)
+			$scope.app =
+				id: app.id
+				name: app.name
+				url: app.url
+				icon: app.icon
+
 			modal.open(
 				scope: $scope
 				templateUrl: 'templates/modal-app-form.html'

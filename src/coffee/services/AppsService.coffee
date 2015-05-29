@@ -8,6 +8,13 @@ class Apps extends Factory
 					)
 				)
 
+			update: (app, callback) ->
+				$indexedDB.openStore('apps', (store) ->
+					store.upsert(app).then(->
+						callback?()
+					)
+				)
+
 			getAll: (callback) ->
 				$indexedDB.openStore('apps', (store) ->
 					store.getAll().then((apps) ->

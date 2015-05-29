@@ -28,6 +28,11 @@ form.form-horizontal(name='formAddApp', ng-submit='formAddApp.$valid && saveApp(
 				div.crop-area
 					img-crop(image='appImage', result-image='appCroppedImage', area-type='square', result-image-size='120')
 
+				div.preview
+					img(ng-src='{{app.icon}}')
+
+				div.clearfix
+
 	div.modal-footer
 		button.btn.btn-default(type='button', data-dismiss='modal') Cancel
 		input.btn.btn-primary(type='submit', value='Save')
