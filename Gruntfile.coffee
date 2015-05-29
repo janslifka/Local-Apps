@@ -1,11 +1,13 @@
 module.exports = (grunt) ->
 	jsLib = [
-		'bower_components/jquery/dist/jquery.js',
-		'bower_components/bootswatch-dist/js/bootstrap.js',
-		'bower_components/angular/angular.js',
-		'bower_components/angular-ui-router/release/angular-ui-router.js',
-		'bower_components/ngImgCrop/compile/unminified/ng-img-crop.js',
+		'bower_components/jquery/dist/jquery.js'
+		'bower_components/bootswatch-dist/js/bootstrap.js'
+		'bower_components/angular/angular.js'
+		'bower_components/angular-ui-router/release/angular-ui-router.js'
+		'bower_components/ngImgCrop/compile/unminified/ng-img-crop.js'
 		'bower_components/angular-indexed-db/angular-indexed-db.js'
+		'bower_components/angular-cookies/angular-cookies.js'
+		'bower_components/angularLocalStorage/src/angularLocalStorage.js'
 	]
 
 	jsLibAnnotate = [
@@ -13,8 +15,8 @@ module.exports = (grunt) ->
 	]
 
 	cssLib = [
-		'bower_components/bootswatch-dist/css/bootstrap.css',
-		'bower_components/font-awesome/css/font-awesome.css',
+		'bower_components/bootswatch-dist/css/bootstrap.css'
+		'bower_components/font-awesome/css/font-awesome.css'
 		'bower_components/ngImgCrop/compile/unminified/ng-img-crop.css'
 	]
 
@@ -109,15 +111,15 @@ module.exports = (grunt) ->
 			files: ['src/**/*']
 			tasks: ['build']
 
-	grunt.loadNpmTasks 'grunt-contrib-clean'
-	grunt.loadNpmTasks 'grunt-contrib-coffee'
-	grunt.loadNpmTasks 'grunt-contrib-copy'
-	grunt.loadNpmTasks 'grunt-contrib-cssmin'
-	grunt.loadNpmTasks 'grunt-contrib-jade'
-	grunt.loadNpmTasks 'grunt-contrib-sass'
-	grunt.loadNpmTasks 'grunt-contrib-uglify'
-	grunt.loadNpmTasks 'grunt-contrib-watch'
-	grunt.loadNpmTasks 'grunt-ng-annotate'
-	grunt.loadNpmTasks 'grunt-ng-classify'
+	grunt.loadNpmTasks('grunt-contrib-clean')
+	grunt.loadNpmTasks('grunt-contrib-coffee')
+	grunt.loadNpmTasks('grunt-contrib-copy')
+	grunt.loadNpmTasks('grunt-contrib-cssmin')
+	grunt.loadNpmTasks('grunt-contrib-jade')
+	grunt.loadNpmTasks('grunt-contrib-sass')
+	grunt.loadNpmTasks('grunt-contrib-uglify')
+	grunt.loadNpmTasks('grunt-contrib-watch')
+	grunt.loadNpmTasks('grunt-ng-annotate')
+	grunt.loadNpmTasks('grunt-ng-classify')
 
-	grunt.registerTask 'build', ['clean:before', 'jade', 'copy', 'ngClassify', 'coffee', 'ngAnnotate', 'uglify', 'sass', 'cssmin', 'clean:after']
+	grunt.registerTask('build', ['clean:before', 'jade', 'copy', 'ngClassify', 'coffee', 'ngAnnotate', 'uglify', 'sass', 'cssmin', 'clean:after'])

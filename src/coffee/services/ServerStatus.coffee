@@ -1,7 +1,6 @@
 class ServerStatus extends Factory
 	constructor: ->
 		service =
-
 			check: (url, callback) ->
 				xhr = new XMLHttpRequest()
 				xhr.open('HEAD', url, true)

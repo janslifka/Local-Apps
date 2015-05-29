@@ -1,12 +1,16 @@
 class Dashboard extends Controller
-	constructor: ($scope, $window, modal, Apps, $interval, ServerStatus) ->
+	constructor: ($scope, $window, modal, Apps, $interval, ServerStatus, Settings) ->
 		$scope.editing = false
 		$scope.apps = []
+		$scope.settings = Settings.get()
 
 		$scope.refreshApps = ->
 			Apps.getAll((apps) ->
 				$scope.apps = apps
 			)
+
+		$scope.refreshSettings = ->
+			$scope.settings = Settings.get()
 
 		$scope.openApp = (url) ->
 			if (!$scope.editing)
@@ -47,6 +51,7 @@ class Dashboard extends Controller
 			modal.open(
 				scope: $scope
 				templateUrl: 'templates/modal-settings.html'
+				controller: 'settingsController'
 			)
 
 		copyAppData = (source) ->

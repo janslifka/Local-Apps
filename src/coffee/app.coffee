@@ -5,4 +5,5 @@ class App extends App
 			'angular.bs.modal'
 			'ngImgCrop'
 			'indexedDB'
+			'angularLocalStorage'
 		]

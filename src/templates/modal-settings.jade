@@ -1,10 +1,14 @@
-form.form-horizontal
+form.form-horizontal(name='formSettings', ng-submit='formSettings.$valid && save()', method='post', novalidate)
 	div.modal-header
 		button.close(type='button', data-dismiss='modal')
 			span &times;
 		h4.modal-title Settings
 	div.modal-body
-		p Here comes settings form
+		div.form-group(ng-class='{"has-error": formSettings.appsPerRow.$invalid && formSettings.appsPerRow.$dirty || formSettings.appsPerRow.$invalid && formSettings.$submitted}')
+			label.control-label.col-sm-3(for='form-apps-per-row') Apps per row
+			div.col-sm-9
+				input.form-control(ng-model='newSettings.appsPerRow', required, type='number', name='appsPerRow', min=1, id='form-apps-per-row')
+
 	div.modal-footer
 		button.btn.btn-default(type='button', data-dismiss='modal') Close
 		input.btn.btn-primary(type='submit', value='Save')
