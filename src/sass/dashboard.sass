@@ -25,7 +25,7 @@
           cursor: pointer
 
       .app-icon
-        img
+        .icon
           -webkit-animation-name: shake
           -webkit-animation-duration: 0.2s
           -webkit-animation-iteration-count: infinite
@@ -33,12 +33,12 @@
 
       &:nth-of-type(even)
         .app-icon
-          img
+          .icon
             -webkit-animation-delay: 0.1s
 
       &:hover
         .app-icon
-          img
+          .icon
             margin: 10px
             width: 100px
             height: 100px
@@ -67,14 +67,9 @@
     width: 120px
     height: 120px
 
-    img
+    .icon
       margin: 10px
-      width: 100px
-      height: 100px
-      background: deeppink
       -webkit-transition: all .15s ease-in-out
-      -webkit-border-radius: 10px
-      border: 0
 
   .app-name
     height: 20px
@@ -86,7 +81,7 @@
 
   &:hover:not(.offline)
     .app-icon
-      img
+      .icon
         width: 110px
         height: 110px
         margin: 5px
@@ -123,3 +118,10 @@
     position: absolute
     right: 10px
     top: 9px
+
+.icon
+  width: 100px
+  height: 100px
+  background: #2c3e50
+  -webkit-border-radius: 10px
+  border: 0
