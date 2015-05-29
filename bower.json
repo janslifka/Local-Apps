@@ -19,6 +19,7 @@
     "font-awesome": "~4.3.0",
     "angular-bs-modal": "~0.0.4",
     "bootswatch-dist": "3.3.4-flatly",
-    "ngImgCrop": "~0.3.2"
+    "ngImgCrop": "~0.3.2",
+    "angular-indexed-db": "~1.1.3"
   }
 }

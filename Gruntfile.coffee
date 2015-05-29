@@ -4,7 +4,8 @@ module.exports = (grunt) ->
 		'bower_components/bootswatch-dist/js/bootstrap.js',
 		'bower_components/angular/angular.js',
 		'bower_components/angular-ui-router/release/angular-ui-router.js',
-		'bower_components/ngImgCrop/compile/unminified/ng-img-crop.js'
+		'bower_components/ngImgCrop/compile/unminified/ng-img-crop.js',
+		'bower_components/angular-indexed-db/angular-indexed-db.js'
 	]
 
 	jsLibAnnotate = [
@@ -21,11 +22,13 @@ module.exports = (grunt) ->
 		pkg: grunt.file.readJSON('package.json')
 
 		clean:
-			before: ['dist']
+			before: [
+				'dist'
+			]
 
 			after: [
-				'dist/coffee',
-				'dist/style',
+				'dist/coffee'
+				'dist/style'
 #				'dist/temp-js'
 			]
 

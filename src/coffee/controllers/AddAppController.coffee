@@ -1,5 +1,5 @@
 class AddApp extends Controller
-	constructor: ($scope, modalInstance) ->
+	constructor: ($scope, modalInstance, Apps) ->
 		$scope.app = {}
 		$scope.formTitle = 'Add application'
 
@@ -16,11 +16,11 @@ class AddApp extends Controller
 				$scope.$apply ($scope) ->
 					$scope.appImage = e.target.result
 
-			reader.readAsDataURL file
+			reader.readAsDataURL(file)
 
 		angular
-			.element document.querySelector 'body'
-			.on 'change', document.querySelector('#file-input'), handleFileSelect
+			.element(document.querySelector('body'))
+			.on('change', '#file-input', handleFileSelect)
 
 		$scope.saveApp = ->
 			app =
@@ -28,4 +28,8 @@ class AddApp extends Controller
 				'url': $scope.app.url
 				'icon': $scope.appCroppedImage
 
-			console.log app
+			Apps.save(app, ->
+				$scope.refreshApps()
+			)
+
+			modalInstance.close()

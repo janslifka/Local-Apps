@@ -15,5 +15,12 @@
         "16": "images/icons/icon-16.png",
         "128": "images/icons/icon-128.png",
         "512": "images/icons/icon-512.png"
-    }
+    },
+
+    "permissions": [
+        "storage",
+        "http://*/"
+    ],
+
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

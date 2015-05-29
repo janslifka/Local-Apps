@@ -20,7 +20,7 @@ form.form-horizontal(name='formAddApp', ng-submit='formAddApp.$valid && saveApp(
 				div.input-group
 					span.input-group-btn
 						span.btn.btn-default.btn-file Browse
-							input.form-control(type='file', id='file-input')
+							input.form-control(type='file', id='file-input', ng-model='file')
 					input.form-control(type='text', ng-model='appFileName', readonly)
 
 		div.form-group

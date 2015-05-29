@@ -15,14 +15,14 @@ div.edit-lock(ng-show='editing')
 		button.btn.btn-primary(ng-click='finishEditing()') Done
 
 div.dashboard
-	div.apps(ng-class="{editing: editing}")
-		hr(ng-show="$index > 0 && $index % 4 == 0", ng-repeat-start='app in apps')
-		div.app(ng-repeat-end, ng-class='{offline: !app.online}', ng-click='openApp(app.url)')
+	div.apps(ng-class='{editing: editing}')
+		hr(ng-show='$index > 0 && $index % 4 == 0', ng-repeat-start='app in apps | orderBy: "name"')
+		div.app(ng-repeat-end, ng-class='{offline: app.offline}', ng-click='openApp(app.url)')
 			div.app-toolbar
 				span.badge(ng-click='editApp(app)')
 					i.fa.fa-pencil
 				span.badge(ng-click='removeApp()')
 					i.fa.fa-times
 			div.app-icon
-				img
+				img(ng-src='{{ app.icon }}')
 			div.app-name {{ app.name }}

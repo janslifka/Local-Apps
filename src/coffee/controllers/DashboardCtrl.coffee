@@ -1,40 +1,14 @@
 class Dashboard extends Controller
-	constructor: ($scope, $window, modal) ->
-		$scope.editing = false
+	constructor: ($scope, $window, modal, Apps, $interval, ServerStatus) ->
+		console.error = ->
 
-		$scope.apps = [
-			name: 'My App 1'
-			url: 'http://localhost/'
-			online: true
-		,
-			name: 'My App 2'
-			url: 'http://localhost/'
-			online: true
-		,
-			name: 'My App 3'
-			url: 'http://localhost/'
-			online: false
-		,
-			name: 'My App 4'
-			url: 'http://localhost/'
-			online: true
-		,
-			name: 'My App 5'
-			url: 'http://localhost/'
-			online: true
-		,
-			name: 'My App 6'
-			url: 'http://localhost/'
-			online: false
-		,
-			name: 'My App 7'
-			url: 'http://localhost/'
-			online: true
-		,
-			name: 'My App 8'
-			url: 'http://localhost/'
-			online: true
-		]
+		$scope.editing = false
+		$scope.apps = []
+
+		$scope.refreshApps = ->
+			Apps.getAll((apps) ->
+				$scope.apps = apps
+			)
 
 		$scope.openApp = (url) ->
 			if (!$scope.editing)
@@ -46,29 +20,45 @@ class Dashboard extends Controller
 		$scope.finishEditing = ->
 			$scope.editing = false
 
-
-		$scope.addApp = () ->
+		$scope.addApp = ->
 			modal.open(
 				scope: $scope
 				templateUrl: 'templates/modal-app-form.html'
 				controller: 'addAppController'
 			)
 
-		$scope.editApp = () ->
+		$scope.editApp = ->
 			modal.open(
 				scope: $scope
 				templateUrl: 'templates/modal-app-form.html'
 				controller: 'editAppController'
 			)
 
-		$scope.removeApp = () ->
+		$scope.removeApp = ->
 			modal.open(
 				scope: $scope
 				templateUrl: 'templates/modal-app-remove.html'
 			)
 
-		$scope.openSettings = () ->
+		$scope.openSettings = ->
 			modal.open(
 				scope: $scope
 				templateUrl: 'templates/modal-settings.html'
 			)
+
+		checkStatus = ->
+			angular.forEach($scope.apps, (app) ->
+				ServerStatus.check(app.url, (online) ->
+					$scope.$apply(->
+						app.offline = !online
+					)
+				)
+			)
+
+		Apps.getAll((apps) ->
+			$scope.apps = apps
+			checkStatus()
+		)
+
+		$interval(checkStatus, 5000)
+

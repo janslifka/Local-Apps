@@ -79,8 +79,12 @@
   .app-name
     height: 20px
     text-align: center
+    color: #000
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
 
-  &:hover
+  &:hover:not(.offline)
     .app-icon
       img
         width: 110px
@@ -90,6 +94,9 @@
   &.offline
     .app-icon
       opacity: 0.5
+
+    .app-name
+      color: #888
 
 .dashboard-menu
   position: absolute
