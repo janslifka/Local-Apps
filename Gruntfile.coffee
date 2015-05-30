@@ -31,7 +31,7 @@ module.exports = (grunt) ->
 			after: [
 				'dist/coffee'
 				'dist/style'
-#				'dist/temp-js'
+				'dist/temp-js'
 			]
 
 		coffee:

@@ -16,6 +16,9 @@ div.edit-lock(ng-show='editing')
 
 div.dashboard
 	div.apps(ng-class='{editing: editing}')
+		div.jumbotron(ng-show='apps.length === 0') You don't have any apps yet
+			div.add-first: a(ng-click="addApp()") #[i.fa.fa-plus] Add app
+
 		hr(ng-show='$index > 0 && $index % settings.appsPerRow == 0', ng-repeat-start='app in apps | orderBy: "name"')
 		div.app(ng-repeat-end, ng-class='{offline: app.offline}', ng-click='openApp(app.url)')
 			div.app-toolbar

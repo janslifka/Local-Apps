@@ -3,7 +3,7 @@
 
     "name": "Local Apps",
     "description": "Chrome extension for local development storing information about local applications",
-    "version": "0.0",
+    "version": "1.0.0",
 
     "app": {
         "launch": {
