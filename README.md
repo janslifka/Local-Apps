@@ -4,7 +4,7 @@ Local Apps is a chrome extension for local development storing information
 about local applications and servers. It provides a dashboard of your local
 applications and servers and their online status.
 
-## Build and usage
+## Build and Usage
 
 To create a build of Local Apps follow these steps:
 

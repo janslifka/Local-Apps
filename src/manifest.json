@@ -2,7 +2,7 @@
     "manifest_version": 2,
 
     "name": "Local Apps",
-    "description": "Chrome extension for local development storing information about local applications",
+    "description": "Chrome extension for local development storing information about local applications and servers.",
     "version": "1.0.0",
 
     "app": {

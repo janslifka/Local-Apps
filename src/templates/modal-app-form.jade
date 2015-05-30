@@ -3,6 +3,7 @@ form.form-horizontal(name='formAddApp', ng-submit='formAddApp.$valid && saveApp(
 		button.close(type='button', data-dismiss='modal')
 			span &times;
 		h4.modal-title {{ formTitle }}
+
 	div.modal-body
 		div.form-group(ng-class='{"has-error": formAddApp.name.$invalid && formAddApp.name.$dirty || formAddApp.name.$invalid && formAddApp.$submitted}')
 			label.control-label.col-sm-3(for='form-name') Name

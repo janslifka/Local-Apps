@@ -29,5 +29,4 @@ class Apps extends Factory
 					)
 				)
 
-
 		return service

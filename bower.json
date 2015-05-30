@@ -1,10 +1,10 @@
 {
     "name": "local-apps",
-    "version": "rc1.0.0",
+    "version": "1.0.0",
     "authors": [
         "Jan Slifka <jan.slifka@gmail.com>"
     ],
-    "description": "Chrome extension for local development storing information about local applications",
+    "description": "Chrome extension for local development storing information about local applications and servers.",
     "license": "MIT",
     "ignore": [
         "**/.*",

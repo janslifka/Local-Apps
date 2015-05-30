@@ -1,7 +1,8 @@
 class Dashboard extends Controller
-	constructor: ($scope, $window, modal, Apps, $interval, ServerStatus, Settings) ->
+	constructor: ($scope, $window, $interval, modal, Apps, ServerStatus, Settings) ->
 		$scope.editing = false
 		$scope.apps = []
+		$scope.appsLoaded = false
 		$scope.settings = Settings.get()
 
 		$scope.refreshApps = ->
@@ -73,8 +74,8 @@ class Dashboard extends Controller
 
 		Apps.getAll((apps) ->
 			$scope.apps = apps
+			$scope.appsLoaded = true
 			checkStatus()
 		)
 
 		$interval(checkStatus, 5000)
-

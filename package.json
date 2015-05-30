@@ -1,7 +1,7 @@
 {
     "name": "local-apps",
-    "version": "rc1.0.0",
-    "description": "Chrome extension for local development storing information about local applications",
+    "version": "1.0.0",
+    "description": "Chrome extension for local development storing information about local applications and servers.",
     "dependencies": {
         "grunt": "^0.4.5",
         "grunt-contrib-clean": "^0.6.0",

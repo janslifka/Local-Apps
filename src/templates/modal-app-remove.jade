@@ -1,6 +1,7 @@
 form.form-horizontal
 	div.modal-header
 		h4.modal-title Are you sure you want to remove this application?
+
 	div.modal-body
 		div.row
 			div.col-sm-12.app-info
@@ -9,6 +10,7 @@ form.form-horizontal
 					h3 {{ app.name }}
 					p: a(href='{{ app.url }}', target='_blank') {{ app.url }}
 					div.clearfix
+
 	div.modal-footer
 		button.btn.btn-default(type='button', data-dismiss='modal') Cancel
 		button.btn.btn-danger(type='button', ng-click='remove()') Remove

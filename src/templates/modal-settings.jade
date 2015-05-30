@@ -3,6 +3,7 @@ form.form-horizontal(name='formSettings', ng-submit='formSettings.$valid && save
 		button.close(type='button', data-dismiss='modal')
 			span &times;
 		h4.modal-title Settings
+
 	div.modal-body
 		div.form-group(ng-class='{"has-error": formSettings.appsPerRow.$invalid && formSettings.appsPerRow.$dirty || formSettings.appsPerRow.$invalid && formSettings.$submitted}')
 			label.control-label.col-sm-3(for='form-apps-per-row') Apps per row

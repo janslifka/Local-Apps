@@ -5,5 +5,5 @@ class Routes extends Config
 		$stateProvider
 			.state 'dashboard',
 				url: '^/'
-				templateUrl: 'templates/dashboard.html',
+				templateUrl: 'templates/dashboard.html'
 				controller: 'dashboardController'
